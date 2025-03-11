@@ -8,4 +8,4 @@ Janet is an owner of 10 McDonald's franchises in NYC. Janet is assessing the dat
 
 ### 3) Get The Average Sales Data of all stores
 
-### 4) Which stores are in danger of being closed (performing 20% below average sales?)
+### 4) Which stores are in danger of being cosed (performing 20% below average sales?)
