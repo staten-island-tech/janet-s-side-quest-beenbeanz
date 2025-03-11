@@ -24,14 +24,13 @@ data = csv_to_list(file_path)
 print(avgSalesPerDay(data))"""
 
 #2
-"""def mostProfitable(data):
+def mostProfitable(data):
     row_totals = []
     for row in data[1:]:
         sales = map(int, row[1:])
         row_totals.append(sum(sales))
         row_totals.sort()
     return row_totals
-print(mostProfitable(data))"""
 
 
 #3 every store every day
@@ -46,5 +45,11 @@ def allStoresAvgSales(data):
 #4
 def closingStores(data):
     twentyPercentOfAverage = allStoresAvgSales(data) * .2
-    return 
-closingStores(data)
+    difference = round(allStoresAvgSales(data) - twentyPercentOfAverage)
+    listOfAverages = mostProfitable(data)
+    listOfClosingStores = []
+    for i in listOfAverages:
+        if i < difference:
+            listOfClosingStores.append(i)
+    return listOfClosingStores
+print(closingStores(data))
