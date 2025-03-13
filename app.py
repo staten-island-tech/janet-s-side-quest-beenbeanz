@@ -15,7 +15,8 @@ file_path = "SalesData.csv"
 data = csv_to_list(file_path)
 
 #1  //every store all 30 days
-"""def avgSalesPerDay(data):    row_totals = {}
+"""def avgSalesPerDay(data):    
+    row_totals = {}
     for row in data[1:]:
         store_name = row[0]
         sales = map(int, row[1:])
@@ -44,12 +45,16 @@ def allStoresAvgSales(data):
 
 #4
 def closingStores(data):
+    row_totals = {}
+    for row in data[1:]:
+        store_name = row[0]
+        sales = map(int, row[1:])
+        row_totals[store_name] = sum(sales)
     twentyPercentOfAverage = allStoresAvgSales(data) * .2
     difference = round(allStoresAvgSales(data) - twentyPercentOfAverage)
-    listOfAverages = mostProfitable(data)
     listOfClosingStores = []
-    for i in listOfAverages:
-        if i < difference:
-            listOfClosingStores.append(i)
+    for index, key in enumerate(row_totals):
+        if row_totals[key] < difference:
+            listOfClosingStores.append(key)
     return listOfClosingStores
 print(closingStores(data))
