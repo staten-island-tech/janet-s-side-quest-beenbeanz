@@ -1,6 +1,13 @@
-x = [1,2,3,4,5]
-for i in x[1:-1]:
-    print(i)
+#F TO C
+list = ["Label", 32, 50, 77, 104]
+newList = []
+actualList = []
 
+for i in list[1:]:
+    newList.append(i)
 
-#3
+temperaturesInF = map(lambda x: (x - 32) * (5/9), newList)
+for i in temperaturesInF:
+    actualList.append(i)
+print((actualList))
+
