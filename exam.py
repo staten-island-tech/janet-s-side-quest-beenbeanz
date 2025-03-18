@@ -1,12 +1,23 @@
 car_rental = {
-    "Honda Civic": {"daily_rate": 35, "available":True, "category": "Standard"}
+    "Toyota Corolla": {"daily_rate": 30, "available": False, "category": "Standard"},
+    "Honda Civic": {"daily_rate": 35, "available": True, "category": "Standard"},
+    "BMW X5": {"daily_rate": 80, "available": True, "category": "Luxury"},
+    "Mercedes C-Class": {"daily_rate": 90, "available": False, "category": "Luxury"},
+    "Ford Focus": {"daily_rate": 28, "available": True, "category": "Standard"}
 }
-rental_request= {"model": "Honda Civic", "days": 8}
+rental_request = {
+    "model": "BMW X5",
+    "days": 8}
+
 def rentCar(cars, requests):
     modelRequest = requests["model"]
     if cars[modelRequest]["available"] == True:
         print(f"{requests["model"]} rented.")
-    else: print(f"{requests["model"]} is unavailable. Suggesting") #SUGGEST OTHER CAR
+    else:
+        for i in cars:
+            if cars[i]["category"] == cars[modelRequest]["category"]:
+                modelRequest = i
+        print(f"{requests["model"]} is unavailable. Suggesting {i}") #SUGGEST OTHER CAR
 
     daysRenting = requests["days"]
     discount = 0
@@ -22,5 +33,4 @@ def rentCar(cars, requests):
     print(f"Total rental cost before discounts: {beforeDiscount}")
     print(f"Total rental cost after discount: {afterDiscount}")
 
-    print(afterDiscount)
 rentCar(car_rental, rental_request)
